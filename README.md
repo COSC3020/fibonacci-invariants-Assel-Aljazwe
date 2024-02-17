@@ -30,7 +30,7 @@ most important part. You do not need to prove that the invariant is correct. Add
 your answer to this markdown file.
 
 ## Good Invariant Reasoning:
-My code's invariant is that, at the start of each recursive call to fib(n), the function is designed to return an array that perfectly contains the Fibonacci sequence up to and including the nth element (in alignment with zero-based indexing). Thus ensuring that the 'state of the world' at each step of the recursion accurately builds upon the previous steps, which maintains the integrity of the sequence throughout. <br />
+My code's invariant is that, at the start of each recursive call to fib(n), the function computes the Fibonacci sequence up to the nth term and returns it as an array. Each element in the array represents a term in the Fibonacci sequence, beginning from the first term (0) and including up to the nth term, with the sequence following a zero-based indexing set-up. This process involves recursively calling the function to build the sequence one by one, ensuring the sequence is accurate and complete for any given n. Thus guaranteeing that the 'state of the world' at each step of the recursion accurately builds upon the previous steps, which maintains the integrity of the sequence throughout. <br />
 
 The invariant is maintained throughout the recursion process due to the following:<br />
 **Base Cases**: The invariant holds true for the base cases 'fib(0)' and 'fib(1)', which return '[0]' and '[0, 1]' respectively (the beginning of the Fibonacci sequence). This follows zero-based indexing because the sequence begins at index 0.<br />
