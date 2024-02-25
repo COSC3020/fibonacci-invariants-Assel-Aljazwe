@@ -29,22 +29,25 @@ Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. You do not need to prove that the invariant is correct. Add
 your answer to this markdown file.
 
-## Good Invariant Reasoning:
-At the beginning of each recursive call to 'fib(n)', where n >= 0, the function is set-up to return an array that up to the (n-1)th term, accurately represents the Fibonacci sequence according to Fibonacci's classical definition. The sequence is mainly characterized by two properties/concepts: Sequence Integrity, and Sequence Extensibility.
+### My Code's Invariant: 
 
-**Sequence Integrity**: The array, up to the last recursive call, maintains the integrity of the Fibonacci sequence. Meaning that each term in the array is the sum of the two preceding terms, with the sequence starting from '[0, 1]' for the first two terms. This property ensures that the Fibonacci sequence is correctly represented up to the current point of recursion. This principle ensures that the sequence we have at any point in our recursion accurately follows the Fibonacci rule:
-* How It Works: From the get-go with '[0, 1]', every new number in the array comes from adding the two numbers before it. This keeps our sequence true to the Fibonacci sequence at every step.
-* Why It Matters: It's all about keeping the sequence historically accurate. As the sequence is built, ensuring each step is correctly calculated means we're always in line with the true Fibonacci sequence.
+At the beginning of each recursive call to $fib(n)$, the function has generated an array that contains a sequence of Fibonacci numbers from $fib(0)$ up to $fib(n-1)$, and this array is exactly $n$ elements long for $n ≥ 0$. This sequence ensures that the last two elements of the array, if $n > 1$, correctly sum up to the next Fibonacci number, maintaining the Fibonacci property where each number is the sum of the two preceding numbers.
 
-**Sequence Extensibility**: At the start of each recursive call, the function is in a state where it can correctly extend the sequence by one more term (the nth term), by adding the last two terms of the current sequence. This extensibility is crucial for the recursive logic to apply the Fibonacci rule (sum of the two preceding numbers) to grow the sequence accurately.
-* Why it Matters: Guarantees that no matter how far the sequence is exteneded, it'll remain logically consistent, following the established pattern without fail.
-  
-**Reasoning**:
-* Base of Recursion: The base cases (fib(0) and fib(1)) establish the initial sequence [0] and [0, 1], respectively. These cases directly support the sequence integrity and provide the foundation for extensibility. Thus ensuring the sequence begins correctly and follows a predictable growth path.
+### Reasoning Behind the Invariant:
 
-* Recursive Progression: For any n > 1, the recursive call relies on the state maintained by the previous call to fib(n-1). The sequence up to fib(n-1) holds true to the Fibonacci sequence's properties, allowing the current call to extend the sequence by accurately calculating the next term. This continuation preserves the sequence's integrity and ensures its extensibility is applicable at every stage.
+**Base Case Alignment**: 
+For fib(0), the function returns [0], an array of length 1, matching the invariant by providing the 0th Fibonacci number.
 
-* Invariant Maintenance: By ensuring that each recursive call to fib(n) can only proceed if the sequence up to fib(n-1) is a valid representation of the Fibonacci sequence and capable of being correctly extended, the invariant describes the "state of the world" in a manner that guarantees correctness and progression towards the algorithm's goal.
+For fib(1), the function returns [0, 1], an array of length 2, which contains the first two Fibonacci numbers, adhering to the invariant.
+
+The function's initiation with $fib(0)$ and $fib(1)$ perfectly sets the Fibonacci sequence's starting point, aligning with the foundational definitions of Fibonacci's sequence. This ensures the sequence begins accurately, creating a reliable basis for the invariant's validity right from the start.
+
+**Recursive Case Structure**: In the recursive progression to $fib(n-1)$, we operate under the idea that we already have a correctly constructed Fibonacci sequence up to the last term. By adding a new element based on the sum of the last two terms, the function accurately extends the sequence. Thus demonstrating the sequence's principles of integrity and extensibility, ensuring each step adheres to the Fibonacci principle and the sequence remains accurate and extendable.
+
+**Algorithmic Progression**: The invariant shows the algorithm's consistent and logical development of the Fibonacci sequence with each recursive call. It emphasizes how the function carefully maintains the sequence's structural and numerical properties, thus illustrating a predictable and reliable building process similar to the methodical advancement we've seen in sorting algorithms. This systematic approach ensures the sequence's accuracy and the algorithm's reliability throughout its execution.
+
+
+
 
 
 
